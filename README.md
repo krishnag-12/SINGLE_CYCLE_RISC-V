@@ -79,6 +79,7 @@ end
   * `ALU result`
   * `Register writes`
   * `Memory reads/writes`
+
 You can use Vivado’s waveform viewer to analyze how the datapath components behave on each clock cycle.
 
 ---
