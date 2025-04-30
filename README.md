@@ -74,11 +74,11 @@ end
 - Set `single_cycle_riscv_tb` as the top module for simulation.
 - Run Behavioral Simulation.
 - Observe waveform outputs like:
- - `PC`
- - `instruction`
- - `ALU result`
- - `Register writes`
- - `Memory reads/writes`
+  * `PC`
+  * `instruction`
+  * `ALU result`
+  * `Register writes`
+  * `Memory reads/writes`
 You can use Vivado’s waveform viewer to analyze how the datapath components behave on each clock cycle.
 
 ---
