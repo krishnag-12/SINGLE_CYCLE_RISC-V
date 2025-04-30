@@ -64,3 +64,24 @@ initial begin
     #100;
     $finish;
 end
+```
+
+---
+
+## ▶️ Steps to Simulate in Vivado:
+- Launch Vivado and create a new project.
+- Add all Verilog source files and the testbench (`single_cycle_riscv_tb.v`) to the project.
+- Set `single_cycle_riscv_tb` as the top module for simulation.
+- Run Behavioral Simulation.
+- Observe waveform outputs like:
+ - `PC`
+ - `instruction`
+ - `ALU result`
+ - `Register writes`
+ - `Memory reads/writes`
+You can use Vivado’s waveform viewer to analyze how the datapath components behave on each clock cycle.
+
+---
+
+## 🙌 Acknowledgments
+Thanks to the open-source hardware and education communities for RISC-V documentation and reference designs.
