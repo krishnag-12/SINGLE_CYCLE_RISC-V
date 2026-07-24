@@ -1,0 +1,42 @@
+// Test Program (program.mem)
+// This file is loaded into the instruction memory.
+//
+// Assembly:
+// 0. ADDI x1, x0, 10        (x1 = 10)
+// 1. ADDI x2, x0, 20        (x2 = 20)
+// 2. ADD x3, x1, x2         (x3 = 10 + 20 = 30)
+// 3. SUB x4, x3, x1         (x4 = 30 - 10 = 20)
+// 4. ADDI x5, x0, 0xFFF     (x5 = 4095)
+// 5. ADDI x6, x0, 0xABC     (x6 = 2748)
+// 6. AND x7, x5, x6         (x7 = FFF & ABC = ABC = 2748)
+// 7. OR x8, x5, x6          (x8 = FFF | ABC = FFF = 4095)
+// 8. XOR x9, x5, x6         (x9 = FFF ^ ABC = 453 = 1092)
+// 9. SW x3, 12(x0)          (Store 30 at memory address 12)
+// 10. LW x10, 12(x0)        (Load from address 12. x10 = 30)
+// 11. ADDI x11, x0, 5       (x11 = 5)
+// 12. ADDI x12, x0, 5       (x12 = 5)
+// 13. BEQ x11, x12, skip    (Branch is TAKEN, jumps to PC+8)
+// 14. ADDI x13, x0, 99      (This instruction is SKIPPED)
+// 15. skip: ADDI x14, x0, 88(This instruction is EXECUTED. x14 = 88)
+// 16. BEQ x0, x0, loop      (Infinite loop to end)
+// 17. loop: BEQ x0, x0, loop
+//
+// Machine Code (Hex):
+00A00093
+01400113
+002081B3
+40118233
+FFF00293
+ABC00313
+0062F3B3
+0062E433
+0062C4B3
+00302623
+00C02503
+00500593
+00500613
+00C58463
+06300693
+05800713
+00000063
+00000063

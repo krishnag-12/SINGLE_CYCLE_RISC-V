@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1763180545">
+  <File Type="RUN-CONSTRS" Name="$PDATADIR/runs/impl_1/constrs_in.xml"/>
+  <File Type="PWROPT-DCP" Name="single_cycle_riscv_pwropt.dcp"/>
+  <File Type="RUN-STRAT" Name="$PDATADIR/runs/impl_1/impl_1.psg"/>
+  <File Type="OPT-DRC" Name="single_cycle_riscv_drc_opted.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="single_cycle_riscv_timing_summary_routed.pb"/>
+  <File Type="PA-TCL" Name="single_cycle_riscv.tcl"/>
+  <File Type="OPT-DCP" Name="single_cycle_riscv_opt.dcp"/>
+  <File Type="PWROPT-DRC" Name="single_cycle_riscv_drc_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="single_cycle_riscv_placed.dcp"/>
+  <File Type="PLACE-IO" Name="single_cycle_riscv_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="single_cycle_riscv_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="single_cycle_riscv_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="single_cycle_riscv_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="single_cycle_riscv_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="single_cycle_riscv_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="single_cycle_riscv_incremental_reuse_pre_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="single_cycle_riscv_postplace_pwropt.dcp"/>
+  <File Type="PHYSOPT-DCP" Name="single_cycle_riscv_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="single_cycle_riscv_drc_physopted.rpt"/>
+  <File Type="ROUTE-DCP" Name="single_cycle_riscv_routed.dcp"/>
+  <File Type="ROUTE-DRC" Name="single_cycle_riscv_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="single_cycle_riscv_drc_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="single_cycle_riscv_power_routed.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="single_cycle_riscv_power_summary_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="single_cycle_riscv_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="single_cycle_riscv_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="single_cycle_riscv_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-SIMILARITY" Name="single_cycle_riscv_incremental_reuse_routed.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="single_cycle_riscv_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="single_cycle_riscv_timing_summary_postroute_physopted.rpt"/>
+  <File Type="RDI-RDI" Name="single_cycle_riscv.vdi"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="single_cycle_riscv_timing_summary_postroute_physopted.pb"/>
+  <File Type="BG-BIT" Name="single_cycle_riscv.bit"/>
+  <File Type="BG-BIN" Name="single_cycle_riscv.bin"/>
+  <File Type="BITSTR-MSK" Name="single_cycle_riscv.msk"/>
+  <File Type="BITSTR-RBT" Name="single_cycle_riscv.rbt"/>
+  <File Type="BITSTR-NKY" Name="single_cycle_riscv.nky"/>
+  <File Type="BITSTR-BMM" Name="single_cycle_riscv_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="single_cycle_riscv.mmi"/>
+  <File Type="BITSTR-SYSDEF" Name="single_cycle_riscv.sysdef"/>
+  <File Type="BG-BGN" Name="single_cycle_riscv.bgn"/>
+  <File Type="BG-DRC" Name="single_cycle_riscv.drc"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2014">
+      <Desc>Vivado Implementation Defaults</Desc>
+    </StratHandle>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>

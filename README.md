@@ -169,10 +169,21 @@ This implementation focuses on a core subset of the RV32I specification, providi
 ```text
 RISC-V/
 ├── RISC-V.srcs/
-│   ├── sources_1/new/
-│   │   └── single_cycle_riscv.v      # Single file containing all RTL modules
-│   └── sim_1/imports/RISC-V/...
-│       └── single_cycle_riscv.v      # Self-contained Verilog Testbench
+│   └── sources_1/new/
+│       └── single_cycle_riscv.v      # Single file containing all RTL modules
+├── uvm_tb/                           # SystemVerilog UVM Verification Environment
+│   ├── riscv_pkg.sv                  # UVM package and includes
+│   ├── riscv_if.sv                   # Interface with internal signal probes
+│   ├── riscv_seq_item.sv             # UVM Sequence Item (Transactions)
+│   ├── riscv_sequence.sv             # UVM Sequences (Reset generation, etc)
+│   ├── riscv_driver.sv               # UVM Driver
+│   ├── riscv_monitor.sv              # UVM Monitor
+│   ├── riscv_sequencer.sv            # UVM Sequencer
+│   ├── riscv_agent.sv                # UVM Agent
+│   ├── riscv_scoreboard.sv           # UVM Scoreboard (Golden Checks)
+│   ├── riscv_env.sv                  # UVM Environment
+│   ├── riscv_test.sv                 # Base UVM Test
+│   └── tb_top.sv                     # Top-level module & DUT instantiation
 ├── program.mem.txt                   # Assembled machine code for simulation
 ├── RISC-V.xpr                        # Xilinx Vivado Project File
 └── README.md                         # This file
@@ -182,26 +193,28 @@ RISC-V/
 
 ## 💻 Simulation
 
-The processor includes a fully self-contained testbench (`tb_single_cycle_riscv`) that pre-loads memory, stimulates the clock/reset, and automatically verifies register states.
+The processor is verified using an industry-standard **SystemVerilog UVM (Universal Verification Methodology)** testbench. This robust architecture isolates verification components (drivers, monitors, scoreboards) from the core RTL, maximizing reusability and scalability for future pipelining.
 
 ### Prerequisites
-*   Xilinx Vivado, Icarus Verilog (iverilog), or ModelSim.
+*   A UVM-compliant SystemVerilog simulator (e.g., QuestaSim, VCS, or Vivado Simulator).
+*   UVM 1.2 library.
 
-### Running the Testbench (Vivado)
-1. Open the project `RISC-V.xpr` in Vivado.
-2. Ensure `program.mem.txt` is loaded into your simulation working directory.
-3. Run the simulation. The testbench will execute the instructions and output verification results directly to the Tcl Console.
+### Running the UVM Testbench
+1. Ensure `program.mem.txt` is located in your simulator's working directory.
+2. Compile the RTL and the UVM environment:
+   - First, compile the source: `single_cycle_riscv.v`
+   - Then, compile the UVM package: `uvm_tb/riscv_pkg.sv`
+   - Finally, compile the top module: `uvm_tb/tb_top.sv`
+3. Run the simulation, specifying `UVM_TESTNAME=riscv_base_test`.
 
-### Example Console Output
+### Example Scoreboard Output
 ```bash
---- Testbench Started ---
-Loading program.mem into instruction memory...
-Reset Asserted (Active-Low)
-Reset De-asserted. Processor running...
-Program execution complete. Checking results...
---- Register File Verification ---
-SUCCESS: All register checks passed!
---- Testbench Finished ---
+UVM_INFO @ 0: reporter [RNTST] Running test riscv_base_test...
+UVM_INFO @ 25: uvm_test_top.env.scb [SCB] PC: 0 | Instr: 500093 | RegWrite: 1 | Addr: 1 | Data: 10
+UVM_INFO @ 35: uvm_test_top.env.scb [SCB] PC: 4 | Instr: 308113 | RegWrite: 1 | Addr: 2 | Data: 20
+UVM_INFO @ 45: uvm_test_top.env.scb [SCB] PC: 8 | Instr: 2081b3 | RegWrite: 1 | Addr: 3 | Data: 30
+...
+UVM_INFO @ 185: uvm_test_top.env.scb [SCB_DONE] Infinite loop (halt) detected.
 ```
 
 *(Placeholder for Simulation Waveforms)*
