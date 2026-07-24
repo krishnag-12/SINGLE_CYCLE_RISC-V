@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/RISC-V_logo.svg/1200px-RISC-V_logo.svg.png" alt="RISC-V Logo" width="200" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/RISC-V-logo-square.svg" alt="RISC-V Logo" width="150" />
   
   # Single-Cycle RISC-V Processor (RV32I)
   
